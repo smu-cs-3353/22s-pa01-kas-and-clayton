@@ -8,7 +8,7 @@
 #include <vector>
 #include "Painting.h"
 
-using namespace std
+using namespace std;
 
 
 class Wall {
