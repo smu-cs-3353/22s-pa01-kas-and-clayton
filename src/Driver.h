@@ -23,10 +23,10 @@ public:
     void sortWList(); //sort by most expensive walls
     Wall getTopWall();
 
-    void readInput(istream&);
-    void bruteForce();
-    vector<Painting> mostExpFirst();
-    void ppUnitWidth();
+    void readInput(istream&, ofstream&, ofstream&, ofstream&);
+    void bruteForce(ofstream&);
+    void mostExpFirst(ofstream&);
+    void ppUnitWidth(ofstream&);
 };
 
 

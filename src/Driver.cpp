@@ -13,7 +13,7 @@ void Driver::sortList() {
 Wall Driver::getTopWall() {
     return wList.at(0);
 }
-void readInput(ifstream& file) {
+void readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
     wallWidth = 0;
     int wallHeight = 0;
     int numPaintings = 0;
@@ -40,13 +40,20 @@ void readInput(ifstream& file) {
             smallestWidth = width;
         }
     }
+
+    if (numPaintings <= 5) {
+        bruteForce(brute);
+    }
+
+    mostExpFirst(highvalue);
+    ppUnitWidth(custom);
 }
 
-void Driver::bruteForce() {
+void Driver::bruteForce(ofstream &file) {
 
 }
 
-vector<Painting> Driver::mostExpFirst() {
+void Driver::mostExpFirst(ofstream &file) {
     sortPList(2); //sorts in most exp to least exp order
 
     int availableWidth = wallWidth;
@@ -62,7 +69,7 @@ vector<Painting> Driver::mostExpFirst() {
     wallvec.print(file);
 }
 
-vector<Painting> Driver::ppUnitWidth(ofstream &file) {
+void Driver::ppUnitWidth(ofstream &file) {
     sortPList(3); //sorts in most exp to least exp order in terms of ppuw
 
     int availableWidth = wallWidth;
