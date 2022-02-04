@@ -4,17 +4,20 @@
 
 #include "Driver.h"
 
-vector<WalL> Driver::getList() {
+vector<Wall> Driver::getList() {
     return wList;
 }
-void Driver::sortList() {
+void Driver::sortList(int a) {
     //sort using one of the sort functions in DESCENDING ORDER
 }
 Wall Driver::getTopWall() {
     return wList.at(0);
 }
+void Driver::bruteForce(ofstream &file) {
+
+}
 void readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
-    wallWidth = 0;
+    int wallWidth = 0;
     int wallHeight = 0;
     int numPaintings = 0;
     float price = 0;
@@ -49,9 +52,6 @@ void readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &c
     ppUnitWidth(custom);
 }
 
-void Driver::bruteForce(ofstream &file) {
-
-}
 
 void Driver::mostExpFirst(ofstream &file) {
     sortPList(2); //sorts in most exp to least exp order
@@ -62,7 +62,7 @@ void Driver::mostExpFirst(ofstream &file) {
     for (int i = 0; i < pList.size(); i++) {
         if (pList.at(i).width > availableWidth)
             continue;
-        wallVec.push_back(pList.at(i))
+        wallVec.push_back(pList.at(i));
         availableWidth -= pList.at(i).getWidth();
     }
 
