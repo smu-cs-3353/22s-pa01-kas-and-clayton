@@ -5,6 +5,12 @@
 #ifndef INC_22S_PA01_KAS_AND_CLAYTON_PAINTING_H
 #define INC_22S_PA01_KAS_AND_CLAYTON_PAINTING_H
 
+#include <vector>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <iomanip>
+
 class Painting {
 private:
     int height;
