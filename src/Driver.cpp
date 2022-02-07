@@ -59,6 +59,8 @@ void Driver::mostExpFirst(ofstream &file) {
     int availableWidth = wallWidth;
     Wall wallVec;
 
+    quicksort(pList, 0, pList.size()-1, 1);
+
     for (int i = 0; i < pList.size(); i++) {
         if (pList.at(i).getWidth() > availableWidth)
             continue;
@@ -75,6 +77,8 @@ void Driver::ppUnitWidth(ofstream &file) {
     int availableWidth = wallWidth;
     Wall wallVec;
 
+    quicksort(pList, 0, pList.size()-1, 2);
+
     for (int i = 0; i < pList.size(); i++) {
         if (pList.at(i).getWidth() > availableWidth)
             continue;
@@ -83,6 +87,48 @@ void Driver::ppUnitWidth(ofstream &file) {
     }
 
     wallVec.print(file);
+}
+
+//taken from https://slaystudy.com/c-vector-quicksort/
+int Driver::partitionMEF(vector<Painting> &vec, int start, int end) {
+    int pivot = end;
+    int j = start;
+    for(int i=start;i<end;++i){
+        if(vec[i].getPrice() > vec[pivot].getPrice()){
+            swap(vec[i],vec[j]);
+            ++j;
+        }
+    }
+    swap(vec[j],vec[pivot]);
+    return j;
+}
+
+//referenced from above
+int Driver::partitionPPU(vector<Painting> &vec, int start, int end) {
+    int pivot = end;
+    int j = start;
+    for(int i=start;i<end;++i){
+        if(vec[i].getPPUW() > vec[pivot].getPPUW()){
+            swap(vec[i],vec[j]);
+            ++j;
+        }
+    }
+    swap(vec[j],vec[pivot]);
+    return j;
+}
+
+void Driver::quicksort(vector<Painting> &vec, int start, int end, int algo) {
+    if(start < end){
+        if (algo = 1) {
+            int p = partitionMEF(vec,start,end);
+            quicksort(vec,start,p-1, 1);
+            quicksort(vec,p+1,end, 1);
+        } else if (algo = 2) {
+            int p = partitionPPU(vec,start,end);
+            quicksort(vec,start,p-1, 2);
+            quicksort(vec,p+1,end, 2);
+        }
+    }
 }
 
 //void Driver::output(ofstream &file, Wall list) {

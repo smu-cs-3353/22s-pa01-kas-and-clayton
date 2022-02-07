@@ -28,6 +28,10 @@ public:
     void bruteForce(ofstream&);
     void mostExpFirst(ofstream&);
     void ppUnitWidth(ofstream&);
+
+    int partitionMEF(vector<Painting>&, int, int);
+    int partitionPPU(vector<Painting>&, int, int);
+    void quicksort(vector<Painting>&, int, int, int);
 };
 
 
