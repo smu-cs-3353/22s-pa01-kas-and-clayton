@@ -7,18 +7,12 @@
 
 
 #include "Wall.h"
+#include "Painting.h"
 #include <vector>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <iomanip>
-
-using std::vector;
-using std::string;
-using std::map;
-using std::ofstream;
-using std::endl;
-
 
 class Driver {
 private:
@@ -34,7 +28,7 @@ public:
     void sortWList(); //sort by most expensive walls
     Wall getTopWall();
 
-    void readInput(istream&, ofstream&, ofstream&, ofstream&);
+    void readInput(ifstream&, ofstream&, ofstream&, ofstream&);
     void bruteForce(ofstream&);
     void mostExpFirst(ofstream&);
     void ppUnitWidth(ofstream&);

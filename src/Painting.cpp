@@ -19,13 +19,13 @@ Painting::Painting(int h, int w, float p, int i) {
     ppuw = p/w;
     id = i;
 }
-Painting::~Painting() {
-    delete height;
-    delete width;
-    delete price;
-    delete ppuw;
-    delete id;
-}
+//Painting::~Painting() {
+//    delete height;
+//    delete width;
+//    delete price;
+//    delete ppuw;
+//    delete id;
+//}
 
 //getters and setters
 void Painting::setHeight(int h) {
@@ -41,7 +41,7 @@ int Painting::getWidth() {
     return width;
 }
 void Painting::setPrice(float p) {
-    price = p
+    price = p;
 }
 float Painting::getPrice() {
     return price;

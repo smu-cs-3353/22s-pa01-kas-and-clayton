@@ -7,17 +7,16 @@
 vector<Wall> Driver::getList() {
     return wList;
 }
-void Driver::sortList(int a) {
+
+void Driver::sortWList() {
     //sort using one of the sort functions in DESCENDING ORDER
 }
 Wall Driver::getTopWall() {
     return wList.at(0);
 }
-void Driver::bruteForce(ofstream &file) {
 
-}
-void readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
-    int wallWidth = 0;
+void Driver::readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
+    wallWidth = 0;
     int wallHeight = 0;
     int numPaintings = 0;
     float price = 0;
@@ -39,8 +38,8 @@ void readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &c
         Painting artwork(pHeight, pWidth, price, pID);
         pList.push_back(artwork);
 
-        if (width < smallestWidth) {
-            smallestWidth = width;
+        if (pWidth < smallestWidth) {
+            smallestWidth = pWidth;
         }
     }
 
@@ -52,6 +51,9 @@ void readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &c
     ppUnitWidth(custom);
 }
 
+void Driver::bruteForce(ofstream &file) {
+
+}
 
 void Driver::mostExpFirst(ofstream &file) {
     sortPList(2); //sorts in most exp to least exp order
@@ -60,13 +62,13 @@ void Driver::mostExpFirst(ofstream &file) {
     Wall wallVec;
 
     for (int i = 0; i < pList.size(); i++) {
-        if (pList.at(i).width > availableWidth)
+        if (pList.at(i).getWidth() > availableWidth)
             continue;
-        wallVec.push_back(pList.at(i));
+        wallVec.addPainting(pList.at(i));
         availableWidth -= pList.at(i).getWidth();
     }
 
-    wallvec.print(file);
+    wallVec.print(file);
 }
 
 void Driver::ppUnitWidth(ofstream &file) {
@@ -76,13 +78,13 @@ void Driver::ppUnitWidth(ofstream &file) {
     Wall wallVec;
 
     for (int i = 0; i < pList.size(); i++) {
-        if (pList.at(i).width > availableWidth)
+        if (pList.at(i).getWidth() > availableWidth)
             continue;
-        wallVec.addPainting(pList.at(i))
+        wallVec.addPainting(pList.at(i));
         availableWidth -= pList.at(i).getWidth();
     }
 
-    wallvec.print(file);
+    wallVec.print(file);
 }
 
 //void Driver::output(ofstream &file, Wall list) {
