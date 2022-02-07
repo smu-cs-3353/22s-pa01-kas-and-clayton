@@ -5,8 +5,12 @@
 #ifndef INC_22S_PA01_KAS_AND_CLAYTON_WALL_H
 #define INC_22S_PA01_KAS_AND_CLAYTON_WALL_H
 
-#include <vector>
 #include "Painting.h"
+#include <cstring>
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -27,7 +31,7 @@ public:
     void addPainting(Painting);
     float getTotalPrice();
     float getWidthRemaining();
-    void print();
+    void print(ofstream&);
     int getNumPaintings();
 //    void setWidthWall(int);
 };

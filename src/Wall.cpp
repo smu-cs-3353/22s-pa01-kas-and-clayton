@@ -13,15 +13,15 @@ Wall::Wall(int w) {
     totalPrice = 0;
     widthRemaining = w;
 }
-Wall::~Wall() {
-    delete totalPrice;
-    delete widthRemaining;
-    delete pList;
-}
+//Wall::~Wall() {
+//    delete totalPrice;
+//    delete widthRemaining;
+//    delete pList;
+//}
 
 void Wall::addPainting(Painting p) {
-    pList.push_back(p)
-    totalPrice += p.getPrice;
+    pList.push_back(p);
+    totalPrice += p.getPrice();
     widthRemaining -= p.getWidth();
 }
 float Wall::getTotalPrice() {
@@ -33,7 +33,8 @@ float Wall::getWidthRemaining() {
 void Wall::print(ofstream &file) {
     file << "$" << totalPrice << endl;
     for (int i = 0; i < pList.size(); i++) {
-        file << pList.at(i).getID() << " " << pList.at(i).getPrice() << " " << pList.at(i).getWidth() << " " pList.at(i).getHeight() << endl;
+        file << pList.at(i).getID() << " " << pList.at(i).getPrice() << " " << pList.at(i).getWidth() << " ";
+        file << pList.at(i).getHeight() << endl;
     }
 }
 int Wall::getNumPaintings() {

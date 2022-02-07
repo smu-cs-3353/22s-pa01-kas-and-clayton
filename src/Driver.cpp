@@ -4,16 +4,16 @@
 
 #include "Driver.h"
 
-vector<WalL> Driver::getList() {
+vector<Wall> Driver::getList() {
     return wList;
 }
-void Driver::sortList() {
+void Driver::sortWList() {
     //sort using one of the sort functions in DESCENDING ORDER
 }
 Wall Driver::getTopWall() {
     return wList.at(0);
 }
-void readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
+void Driver::readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
     wallWidth = 0;
     int wallHeight = 0;
     int numPaintings = 0;
@@ -36,8 +36,8 @@ void readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &c
         Painting artwork(pHeight, pWidth, price, pID);
         pList.push_back(artwork);
 
-        if (width < smallestWidth) {
-            smallestWidth = width;
+        if (pWidth < smallestWidth) {
+            smallestWidth = pWidth;
         }
     }
 
@@ -60,13 +60,13 @@ void Driver::mostExpFirst(ofstream &file) {
     Wall wallVec;
 
     for (int i = 0; i < pList.size(); i++) {
-        if (pList.at(i).width > availableWidth)
+        if (pList.at(i).getWidth() > availableWidth)
             continue;
-        wallVec.push_back(pList.at(i))
+        wallVec.addPainting(pList.at(i));
         availableWidth -= pList.at(i).getWidth();
     }
 
-    wallvec.print(file);
+    wallVec.print(file);
 }
 
 void Driver::ppUnitWidth(ofstream &file) {
@@ -76,13 +76,13 @@ void Driver::ppUnitWidth(ofstream &file) {
     Wall wallVec;
 
     for (int i = 0; i < pList.size(); i++) {
-        if (pList.at(i).width > availableWidth)
+        if (pList.at(i).getWidth() > availableWidth)
             continue;
-        wallVec.addPainting(pList.at(i))
+        wallVec.addPainting(pList.at(i));
         availableWidth -= pList.at(i).getWidth();
     }
 
-    wallvec.print(file);
+    wallVec.print(file);
 }
 
 //void Driver::output(ofstream &file, Wall list) {
