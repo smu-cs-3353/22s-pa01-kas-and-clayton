@@ -7,12 +7,14 @@
 vector<Wall> Driver::getList() {
 //    return wList;
 }
+
 void Driver::sortWList() {
     //sort using one of the sort functions in DESCENDING ORDER
 }
 Wall Driver::getTopWall() {
 //    return wList.at(0);
 }
+
 void Driver::readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
     wallWidth = 0;
     int wallHeight = 0;

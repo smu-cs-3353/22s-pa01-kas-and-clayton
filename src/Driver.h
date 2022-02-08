@@ -10,6 +10,11 @@
 #include <math.h>
 #include "Wall.h"
 #include "Painting.h"
+#include <vector>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <iomanip>
 
 class Driver {
 private:
@@ -23,6 +28,7 @@ private:
 public:
     vector<Wall> getList();
     //void sortPList(int); // int decides how to sort -> in descending order but based on what? 1 = brute force,
+
                          // 2 = mostExpFirst (based on price), 3 = ppUnitWidth (based on ppuw)
     void sortWList(); //sort by most expensive walls
     Wall getTopWall();
