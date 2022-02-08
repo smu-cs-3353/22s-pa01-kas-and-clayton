@@ -8,10 +8,12 @@
 Wall::Wall() {
     totalPrice = 0;
     widthRemaining = 0;
+    numPaintings = 0;
 }
 Wall::Wall(int w) {
     totalPrice = 0;
     widthRemaining = w;
+    numPaintings = 0;
 }
 //Wall::~Wall() {
 //    delete totalPrice;
@@ -23,6 +25,7 @@ void Wall::addPainting(Painting p) {
     pList.push_back(p);
     totalPrice += p.getPrice();
     widthRemaining -= p.getWidth();
+    numPaintings++;
 }
 float Wall::getTotalPrice() {
     return totalPrice;

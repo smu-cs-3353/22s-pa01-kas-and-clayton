@@ -5,14 +5,14 @@
 #include "Driver.h"
 
 vector<Wall> Driver::getList() {
-    return wList;
+//    return wList;
 }
 
 void Driver::sortWList() {
     //sort using one of the sort functions in DESCENDING ORDER
 }
 Wall Driver::getTopWall() {
-    return wList.at(0);
+//    return wList.at(0);
 }
 
 void Driver::readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
@@ -43,23 +43,47 @@ void Driver::readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofs
         }
     }
 
-    if (numPaintings <= 5) {
-        bruteForce(brute);
+    if (numPaintings <= 10) {
+        bruteForce(brute, numPaintings);
     }
 
     mostExpFirst(highvalue);
     ppUnitWidth(custom);
 }
 
-void Driver::bruteForce(ofstream &file) {
+void Driver::bruteForce(ofstream &file, int count) {
+    generateSubsets(count);
+    int max = 0;
+    int cost = 0;
+    for (int i = 0; i < wListTotal.size(); i++) {
+        if (wListTotal.at(i) > wListTotal.at(max) && wListWidth.at(i) < wallWidth) {
+            max = i;
+            cost = wListTotal.at(i);
+        }
+    }
+
+    Painting tempPaint;
+    Wall wallVec(wallWidth);
+    for (int i = 0; i < wList.at(max).size(); i++) {
+        for (int j = 0; j < pList.size(); j++) {
+            if (pList.at(j).getID() == wList.at(max).at(i)) {
+                tempPaint = pList.at(j);
+                wallVec.addPainting(tempPaint);
+            }
+        }
+    }
+
+    wallVec.print(file);
+
 
 }
 
 void Driver::mostExpFirst(ofstream &file) {
-    sortPList(2); //sorts in most exp to least exp order
-
     int availableWidth = wallWidth;
     Wall wallVec;
+
+    //sorts in most exp to least exp order
+    quicksort(pList, 0, pList.size()-1, 1);
 
     for (int i = 0; i < pList.size(); i++) {
         if (pList.at(i).getWidth() > availableWidth)
@@ -72,10 +96,11 @@ void Driver::mostExpFirst(ofstream &file) {
 }
 
 void Driver::ppUnitWidth(ofstream &file) {
-    sortPList(3); //sorts in most exp to least exp order in terms of ppuw
-
     int availableWidth = wallWidth;
     Wall wallVec;
+
+    //sorts in most exp to least exp order in terms of ppuw
+    quicksort(pList, 0, pList.size()-1, 2);
 
     for (int i = 0; i < pList.size(); i++) {
         if (pList.at(i).getWidth() > availableWidth)
@@ -85,6 +110,70 @@ void Driver::ppUnitWidth(ofstream &file) {
     }
 
     wallVec.print(file);
+}
+
+//taken from https://slaystudy.com/c-vector-quicksort/
+int Driver::partitionMEF(vector<Painting> &vec, int start, int end) {
+    int pivot = end;
+    int j = start;
+    for(int i=start;i<end;++i){
+        if(vec[i].getPrice() > vec[pivot].getPrice()){
+            swap(vec[i],vec[j]);
+            ++j;
+        }
+    }
+    swap(vec[j],vec[pivot]);
+    return j;
+}
+
+//referenced from above
+int Driver::partitionPPU(vector<Painting> &vec, int start, int end) {
+    int pivot = end;
+    int j = start;
+    for(int i=start;i<end;++i){
+        if(vec[i].getPPUW() > vec[pivot].getPPUW()){
+            swap(vec[i],vec[j]);
+            ++j;
+        }
+    }
+    swap(vec[j],vec[pivot]);
+    return j;
+}
+
+void Driver::quicksort(vector<Painting> &vec, int start, int end, int algo) {
+    if(start < end){
+        if (algo == 1) {
+            int p = partitionMEF(vec,start,end);
+            quicksort(vec,start,p-1, 1);
+            quicksort(vec,p+1,end, 1);
+        } else if (algo == 2) {
+            int p = partitionPPU(vec,start,end);
+            quicksort(vec,start,p-1, 2);
+            quicksort(vec,p+1,end, 2);
+        }
+    }
+}
+
+//referenced from https://towardsdatascience.com/a-guide-to-scraping-html-tables-with-pandas-and-beautifulsoup-7fc24c331cf7
+void Driver::generateSubsets(int count) {
+    vector<int> temp;
+    int totalCost;
+    int totalWidth;
+    for (int i = 0; i < pow(2,count); i++) {
+        totalCost = 0;
+        totalWidth = 0;
+        temp.clear();
+        for (int j = 0; j < count; j++) {
+            if ((i & (1 << j)) != 0) {
+                temp.push_back(pList.at(j).getID());
+                totalCost += pList.at(j).getPrice();
+                totalWidth += pList.at(j).getWidth();
+            }
+        }
+        wList.push_back(temp);
+        wListTotal.push_back(totalCost);
+        wListWidth.push_back(totalWidth);
+    }
 }
 
 //void Driver::output(ofstream &file, Wall list) {
