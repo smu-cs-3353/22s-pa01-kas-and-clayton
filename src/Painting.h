@@ -28,7 +28,7 @@ public:
     //constructor
     Painting();
     Painting(int, int, float, int);
-    ~Painting();
+    //~Painting();
 
     //anything else
 };

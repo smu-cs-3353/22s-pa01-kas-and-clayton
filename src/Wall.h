@@ -25,7 +25,7 @@ public:
     //constructors
     Wall();
     Wall(int);
-    ~Wall();
+    //~Wall();
 
     //methods
     void addPainting(Painting);
