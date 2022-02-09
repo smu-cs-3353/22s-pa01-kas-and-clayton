@@ -41,7 +41,7 @@ void Driver::readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofs
         }
     }
 
-    if (numPaintings <= 10) {
+    if (numPaintings <= 25) {
         bruteForce(brute, numPaintings);
     }
 
