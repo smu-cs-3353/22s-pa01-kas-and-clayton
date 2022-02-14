@@ -9,7 +9,7 @@
 int main(int argc, char** argv){
 
     if(argc == 1) {
-        std::cout << "Enter Query: " << endl;
+        std::cout << "no input " << endl;
     } else {
 
         ifstream input(argv[1]);
