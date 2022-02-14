@@ -13,6 +13,7 @@
 
 class Painting {
 private:
+    //variables needed. all information about paintings
     int height;
     int width;
     float price;
@@ -31,12 +32,9 @@ public:
     void setID(int);
     int getID();
 
-    //constructor
+    //constructors
     Painting();
     Painting(int, int, float, int);
-    //~Painting();
-
-    //anything else
 };
 
 
