@@ -132,7 +132,7 @@ this algorithm.
 > on a data set of size 29 which took 423 seconds for the program 
 > to get executed. Below is a graph:<br />
 > 
-> ![Alt text](/Users/kasrataghavi/Desktop/Screen Shot 2022-02-14 at 12.45.28 AM.png)
+> <img width="559" alt="Screen Shot 2022-02-14 at 12 45 28 AM" src="https://user-images.githubusercontent.com/80543456/153820178-7dd6f53a-2ee8-44a9-9163-e55ac38cef45.png">
 > 
 
 ### Most Expensive:
@@ -153,7 +153,8 @@ this algorithm.
 > valuable wall while not being much slower than the most
 > expensive algorithm:
 > 
-> ![Alt text](/Users/kasrataghavi/Desktop/Screen Shot 2022-02-14 at 12.45.34 AM.png)
-> 
-> ![Alt text](/Users/kasrataghavi/Desktop/Screen Shot 2022-02-14 at 1.07.52 AM.png)
+> <img width="590" alt="Screen Shot 2022-02-14 at 12 45 34 AM" src="https://user-images.githubusercontent.com/80543456/153820208-8820f034-e59f-43bc-a2f8-5c685fef2526.png">
+>
+> <img width="598" alt="Screen Shot 2022-02-14 at 1 07 52 AM" src="https://user-images.githubusercontent.com/80543456/153820275-60a73e6b-0cb0-4ca8-9229-3171215ff565.png">
+
 >
