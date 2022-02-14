@@ -5,9 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(src)
 
 set(input01 "Input/sample.txt")
-set(input02 "Input/1000Sample.txt")
-set(input03 "Input/10000Sample.txt")
-set(input04 "Input/100000Sample.txt")
+set(input02 "Input/LargeDataSets/1000Sample.txt")
+set(input03 "Input/LargeDataSets/10000Sample.txt")
+set(input04 "Input/LargeDataSets/100000Sample.txt")
 
 foreach(file IN LISTS input01 input02 input03 input04)
     configure_file(${file} ${file} COPYONLY)

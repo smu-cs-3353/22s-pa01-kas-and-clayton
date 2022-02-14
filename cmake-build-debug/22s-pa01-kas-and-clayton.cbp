@@ -5,7 +5,7 @@
 		<Option title="22s-pa01-kas-and-clayton"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\Input\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\Input\;CMake Files\Input\LargeDataSets\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/kasrataghavi/CLionProjects/22s-pa01-kas-and-clayton/cmake-build-debug"/>
@@ -102,17 +102,17 @@
 		<Unit filename="/Users/kasrataghavi/CLionProjects/22s-pa01-kas-and-clayton/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/Users/kasrataghavi/CLionProjects/22s-pa01-kas-and-clayton/Input/100000Sample.txt">
-			<Option virtualFolder="CMake Files\Input\"/>
-		</Unit>
-		<Unit filename="/Users/kasrataghavi/CLionProjects/22s-pa01-kas-and-clayton/Input/10000Sample.txt">
-			<Option virtualFolder="CMake Files\Input\"/>
-		</Unit>
-		<Unit filename="/Users/kasrataghavi/CLionProjects/22s-pa01-kas-and-clayton/Input/1000Sample.txt">
-			<Option virtualFolder="CMake Files\Input\"/>
-		</Unit>
 		<Unit filename="/Users/kasrataghavi/CLionProjects/22s-pa01-kas-and-clayton/Input/sample.txt">
 			<Option virtualFolder="CMake Files\Input\"/>
+		</Unit>
+		<Unit filename="/Users/kasrataghavi/CLionProjects/22s-pa01-kas-and-clayton/Input/LargeDataSets/100000Sample.txt">
+			<Option virtualFolder="CMake Files\Input\LargeDataSets\"/>
+		</Unit>
+		<Unit filename="/Users/kasrataghavi/CLionProjects/22s-pa01-kas-and-clayton/Input/LargeDataSets/10000Sample.txt">
+			<Option virtualFolder="CMake Files\Input\LargeDataSets\"/>
+		</Unit>
+		<Unit filename="/Users/kasrataghavi/CLionProjects/22s-pa01-kas-and-clayton/Input/LargeDataSets/1000Sample.txt">
+			<Option virtualFolder="CMake Files\Input\LargeDataSets\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
