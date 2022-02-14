@@ -21,22 +21,22 @@ the maximum potential profit.
 -using cd to get to the designated project<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 -once you are in the project folder then use 
-command line mkdir to create a build &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;folder by typing mkdir nameOfTheFolder<br />
+command line 'mkdir' to create a build &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;folder by typing 'mkdir [nameOfTheFolder]'<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 -use command line cd to go to the folder that you just created<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 -now you are ready to build your project<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
--use command line cmake .. to add cmake to the folder<br />
+-type in the command line 'cmake ..' to add cmake to the folder<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
--now to build the cmake use the command line cmake --build .<br />
+-now to build the cmake use the command line 'cmake --build' .<br />
 ### Run:
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
--Use command line cd to go to the cmake-build-debug folder<br />
+-Use command line cd to go to the folder that you created<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
--In this folder you should be able to see a folder with the same name is your &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;project<br />
+-In this folder you should be able to see a folder with the same name as your project<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
--Use command line ./name of your project input/the absolute path of your input file<br />
+-Use command line './[name of your project] input/[the absolute path of your input file]'<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 -Good Job! you have build and run your project from terminal 
 
