@@ -20,9 +20,9 @@ int main(int argc, char** argv){
         int pos2 = str.find_last_of('/');
         string sub = str.substr(pos2+1, pos - 6);
 
-        ofstream brute(sub+"-bruteforce.txt");
-        ofstream highvalue(sub+"-highvalue.txt");
-        ofstream custom(sub+"-custom.txt");
+        ofstream brute(sub + "-bruteforce.txt");
+        ofstream highvalue(sub + "-highvalue.txt");
+        ofstream custom(sub + "-custom.txt");
 
         Driver d;
         d.readInputBruteForce(input, brute);
