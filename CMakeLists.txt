@@ -13,4 +13,4 @@ foreach(file IN LISTS input01 input02 input03 input04)
     configure_file(${file} ${file} COPYONLY)
 endforeach()
 
-add_executable(22s-pa01-kas-and-clayton src/main.cpp src/Driver.cpp src/Wall.cpp src/Painting.cpp)
+add_executable(22s-pa01-kas-and-clayton src/main.cpp src/Driver.cpp src/Wall.cpp src/Painting.cpp src/Driver.h src/Wall.h src/Painting.h)
