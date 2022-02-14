@@ -3,17 +3,58 @@
 //
 
 #include "Driver.h"
+using namespace std::chrono;
 
 vector<Wall> Driver::getList() {
 //    return wList;
 }
+
 void Driver::sortWList() {
     //sort using one of the sort functions in DESCENDING ORDER
 }
 Wall Driver::getTopWall() {
 //    return wList.at(0);
 }
-void Driver::readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
+void Driver::readInputBruteForce(ifstream &bruteFile, ofstream &Brute) {
+    wallWidth = 0;
+    int wallHeight = 0;
+    int numPaintings = 0;
+    float price = 0;
+    int pWidth = 0;
+    int pHeight = 0;
+    int pID = 0;
+    smallestWidth = 1000000;
+
+    bruteFile >> wallWidth;
+    bruteFile >> wallHeight;
+    bruteFile >> numPaintings;
+    if (numPaintings > 25){
+        numPaintings = 25;
+    }
+
+    for (int i = 0; i < numPaintings; i++) {
+        bruteFile >> pID;
+        bruteFile >> price;
+        bruteFile >> pWidth;
+        bruteFile >> pHeight;
+
+        Painting artwork(pHeight, pWidth, price, pID);
+        pList.push_back(artwork);
+
+        if (pWidth < smallestWidth) {
+            smallestWidth = pWidth;
+        }
+    }
+
+    auto start = high_resolution_clock::now();
+    bruteForce(Brute, numPaintings);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<seconds>(stop - start);
+    cout<<"Time that it takes for the brute force algo to get executed in seconds: "<<duration.count()<<endl;
+
+}
+
+void Driver::readInput(ifstream& file, ofstream &highvalue, ofstream &custom) {
     wallWidth = 0;
     int wallHeight = 0;
     int numPaintings = 0;
@@ -26,6 +67,7 @@ void Driver::readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofs
     file >> wallWidth;
     file >> wallHeight;
     file >> numPaintings;
+    cout<<"number of paintings: " << numPaintings<<endl;
 
     for (int i = 0; i < numPaintings; i++) {
         file >> pID;
@@ -41,12 +83,24 @@ void Driver::readInput(ifstream& file, ofstream &brute, ofstream &highvalue, ofs
         }
     }
 
-    if (numPaintings <= 25) {
-        bruteForce(brute, numPaintings);
-    }
-
+//    if (numPaintings <= 30) {
+//        auto start = high_resolution_clock::now();
+//        bruteForce(brute, numPaintings);
+//        auto stop = high_resolution_clock::now();
+//        auto duration = duration_cast<seconds>(stop - start);
+//        cout<<"Time that it takes for the brute force algo to get executed: "<<duration.count()<<endl;
+//    }
+    auto start1 = high_resolution_clock::now();
     mostExpFirst(highvalue);
+    auto stop1 = high_resolution_clock::now();
+    auto duration1 = duration_cast<milliseconds>(stop1 - start1);
+    cout<<"Time that it takes for the most expensive to algo get executed in milliseconds: "<<duration1.count()<<endl;
+
+    auto start2 = high_resolution_clock::now();
     ppUnitWidth(custom);
+    auto stop2 = high_resolution_clock::now();
+    auto duration2 = duration_cast<milliseconds>(stop2 - start2);
+    cout<<"Time that it takes for the custom algo to get executed in milliseconds: "<<duration2.count()<<endl;
 }
 
 void Driver::bruteForce(ofstream &file, int count) {
@@ -84,8 +138,11 @@ void Driver::mostExpFirst(ofstream &file) {
     quicksort(pList, 0, pList.size()-1, 1);
 
     for (int i = 0; i < pList.size(); i++) {
+        if (availableWidth == 0)
+            break;
         if (pList.at(i).getWidth() > availableWidth)
             continue;
+        cout<<i<<endl;
         wallVec.addPainting(pList.at(i));
         availableWidth -= pList.at(i).getWidth();
     }
@@ -99,10 +156,12 @@ void Driver::ppUnitWidth(ofstream &file) {
 
     //sorts in most exp to least exp order in terms of ppuw
     quicksort(pList, 0, pList.size()-1, 2);
-
     for (int i = 0; i < pList.size(); i++) {
+        if (availableWidth == 0)
+            break;
         if (pList.at(i).getWidth() > availableWidth)
             continue;
+        cout<<i<<endl;
         wallVec.addPainting(pList.at(i));
         availableWidth -= pList.at(i).getWidth();
     }
@@ -181,4 +240,50 @@ void Driver::generateSubsets(int count) {
 //    }
 //    list.print(file);
 //}
+void Driver::read(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
+    wallWidth = 0;
+    int wallHeight = 0;
+    int numPaintings = 0;
+    float price = 0;
+    int pWidth = 0;
+    int pHeight = 0;
+    int pID = 0;
+    smallestWidth = 1000000;
 
+    file >> wallWidth;
+    file >> wallHeight;
+    file >> numPaintings;
+
+    for (int i = 0; i < numPaintings; i++) {
+        file >> pID;
+        file >> price;
+        file >> pWidth;
+        file >> pHeight;
+
+        Painting artwork(pHeight, pWidth, price, pID);
+        pList.push_back(artwork);
+
+        if (pWidth < smallestWidth) {
+            smallestWidth = pWidth;
+        }
+    }
+
+    if (numPaintings <= 30) {
+        auto start = high_resolution_clock::now();
+        bruteForce(brute, numPaintings);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<seconds>(stop - start);
+        cout<<"Time that it takes for the brute force algo to get executed: "<<duration.count()<<endl;
+    }
+    auto start1 = high_resolution_clock::now();
+    mostExpFirst(highvalue);
+    auto stop1 = high_resolution_clock::now();
+    auto duration1 = duration_cast<milliseconds>(stop1 - start1);
+    cout<<"Time that it takes for the most expensive to algo get executed: "<<duration1.count()<<endl;
+
+    auto start2 = high_resolution_clock::now();
+    ppUnitWidth(custom);
+    auto stop2 = high_resolution_clock::now();
+    auto duration2 = duration_cast<milliseconds>(stop2 - start2);
+    cout<<"Time that it takes for the custom algo to get executed: "<<duration2.count()<<endl;
+}

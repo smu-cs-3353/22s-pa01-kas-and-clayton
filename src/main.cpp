@@ -13,6 +13,7 @@ int main(int argc, char** argv){
     } else {
 
         ifstream input(argv[1]);
+        ifstream test(argv[1]);
 
         string str = argv[1];
         int pos = str.find('.');
@@ -23,7 +24,8 @@ int main(int argc, char** argv){
         ofstream custom("output/" + sub + "-custom.txt");
 
         Driver d;
-        d.readInput(input, brute, highvalue, custom);
+        d.readInputBruteForce(input, brute);
+        d.readInput(test, highvalue, custom);
 
         brute.close();
         highvalue.close();
