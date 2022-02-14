@@ -3,8 +3,6 @@
 //
 
 #include "Driver.h"
-
-
 using namespace std::chrono;
 
 vector<Wall> Driver::getList() {
