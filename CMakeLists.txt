@@ -4,8 +4,13 @@ project(22s-pa01-kas-and-clayton)
 set(CMAKE_CXX_STANDARD 17)
 set(src)
 
-include_directories(src)
+set(input01 "Input/sample.txt")
+set(input02 "Input/1000Sample.txt")
+set(input03 "Input/10000Sample.txt")
+set(input04 "Input/100000Sample.txt")
 
-#add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/Driver.cpp  ${CMAKE_CURRENT_SOURCE_DIR}/src/Painting.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/Wall.cpp)
+foreach(file IN LISTS input01 input02 input03 input04)
+    configure_file(${file} ${file} COPYONLY)
+endforeach()
 
 add_executable(22s-pa01-kas-and-clayton src/main.cpp src/Driver.cpp src/Wall.cpp src/Painting.cpp)

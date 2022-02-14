@@ -33,7 +33,9 @@ public:
     void sortWList(); //sort by most expensive walls
     Wall getTopWall();
 
-    void readInput(ifstream&, ofstream&, ofstream&, ofstream&);
+    void readInput(ifstream&, ofstream&, ofstream&);
+    void read(ifstream&, ofstream&, ofstream&, ofstream&);
+    void readInputBruteForce(ifstream&, ofstream&);
     void bruteForce(ofstream&, int);
     void mostExpFirst(ofstream&);
     void ppUnitWidth(ofstream&);
