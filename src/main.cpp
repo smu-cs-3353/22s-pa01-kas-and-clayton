@@ -17,11 +17,12 @@ int main(int argc, char** argv){
 
         string str = argv[1];
         int pos = str.find('.');
-        string sub = str.substr(6, pos - 6);
+        int pos2 = str.find_last_of('/');
+        string sub = str.substr(pos2+1, pos - 6);
 
-        ofstream brute("output/" + sub + "-bruteforce.txt");
-        ofstream highvalue("output/" + sub + "-highvalue.txt");
-        ofstream custom("output/" + sub + "-custom.txt");
+        ofstream brute(sub + "-bruteforce.txt");
+        ofstream highvalue(sub + "-highvalue.txt");
+        ofstream custom(sub + "-custom.txt");
 
         Driver d;
         d.readInputBruteForce(input, brute);
