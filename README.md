@@ -127,18 +127,33 @@ this algorithm.
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Although producing the most optimal 
 > output as the number of painting increases the time complexity of
 > 2^n increases and as the result of increase in the number of subsets
-> this algorithm gets exponentially slower.![img.png](img.png)
+> this algorithm gets exponentially slower. As the result of 
+> slowness of this algorithm we only were able to generate output 
+> on a data set of size 29 which took 423 seconds for the program 
+> to get executed. Below is a graph:<br />
+> 
+> ![Alt text](/Users/kasrataghavi/Desktop/Screen Shot 2022-02-14 at 12.45.28 AM.png)
 > 
 
 ### Most Expensive:
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This algorithm provides a quick but not
 > optimize solution as it is the fastest algorithm out of the 3 
 >  that were implemented for this project and due to the 
-> sorting algorithm the time complexity is O(n^2)
+> sorting algorithm the time complexity is O(n^2). Using python
+> we generated random data sets of 100, 1k, 10k and 100k and tested
+> this algorithm as well as our custom algorithm with those data sets.
 
 ### Custom:
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Our custom algorithm achieves  
 > an optimized solution that is as perfect as our brute force
 > algorithm does while being wildly faster and just slightly slower
 > than most expensive algorithm which is the fastest algorithm with
-> the time complexity of O(n^2)
+> the time complexity of O(n^2). Below is a graph which shows 
+> the efficiency of this algorithm in terms of generating the most
+> valuable wall while not being much slower than the most
+> expensive algorithm:
+> 
+> ![Alt text](/Users/kasrataghavi/Desktop/Screen Shot 2022-02-14 at 12.45.34 AM.png)
+> 
+> ![Alt text](/Users/kasrataghavi/Desktop/Screen Shot 2022-02-14 at 1.07.52 AM.png)
+>
