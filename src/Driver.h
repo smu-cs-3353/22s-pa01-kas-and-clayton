@@ -20,28 +20,26 @@
 
 class Driver {
 private:
-    int count;
-    int smallestWidth;
-    int wallWidth;
-    vector<vector<int>> wList;
-    vector<int> wListTotal;
-    vector<int> wListWidth;
-    vector<Painting> pList;
+    int smallestWidth; //smallest Painting in set to fit on wall
+    int wallWidth; //width of wall
+
+    //parallel vectors to store info rather than objects -> faster algorithm
+    vector<vector<int>> wList; //wall list by ID
+    vector<int> wListTotal; // wall list by total cost
+    vector<int> wListWidth; //wall list by width
+    vector<Painting> pList; //vector of all the paintings to be potentially put on wall
 public:
-    vector<Wall> getList();
-    //void sortPList(int); // int decides how to sort -> in descending order but based on what? 1 = brute force,
 
-                         // 2 = mostExpFirst (based on price), 3 = ppUnitWidth (based on ppuw)
-    void sortWList(); //sort by most expensive walls
-    Wall getTopWall();
-
+    //read input files for the algorithms
     void readInput(ifstream&, ofstream&, ofstream&);
-    void read(ifstream&, ofstream&, ofstream&, ofstream&);
     void readInputBruteForce(ifstream&, ofstream&);
+
+    //actual algorithm declaration
     void bruteForce(ofstream&, int);
     void mostExpFirst(ofstream&);
     void ppUnitWidth(ofstream&);
 
+    //sorting and generating subsets declarations
     int partitionMEF(vector<Painting>&, int, int);
     int partitionPPU(vector<Painting>&, int, int);
     void quicksort(vector<Painting>&, int, int, int);
