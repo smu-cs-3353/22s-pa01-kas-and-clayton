@@ -4,19 +4,8 @@
 
 #include "Driver.h"
 
-
 using namespace std::chrono;
 
-vector<Wall> Driver::getList() {
-//    return wList;
-}
-
-void Driver::sortWList() {
-    //sort using one of the sort functions in DESCENDING ORDER
-}
-Wall Driver::getTopWall() {
-//    return wList.at(0);
-}
 void Driver::readInputBruteForce(ifstream &bruteFile, ofstream &Brute) {
     wallWidth = 0;
     int wallHeight = 0;
@@ -69,7 +58,6 @@ void Driver::readInput(ifstream& file, ofstream &highvalue, ofstream &custom) {
     file >> wallWidth;
     file >> wallHeight;
     file >> numPaintings;
-    cout<<"number of paintings: " << numPaintings<<endl;
 
     for (int i = 0; i < numPaintings; i++) {
         file >> pID;
@@ -144,7 +132,6 @@ void Driver::mostExpFirst(ofstream &file) {
             break;
         if (pList.at(i).getWidth() > availableWidth)
             continue;
-        cout<<i<<endl;
         wallVec.addPainting(pList.at(i));
         availableWidth -= pList.at(i).getWidth();
     }
@@ -163,7 +150,6 @@ void Driver::ppUnitWidth(ofstream &file) {
             break;
         if (pList.at(i).getWidth() > availableWidth)
             continue;
-        cout<<i<<endl;
         wallVec.addPainting(pList.at(i));
         availableWidth -= pList.at(i).getWidth();
     }
@@ -199,9 +185,10 @@ int Driver::partitionPPU(vector<Painting> &vec, int start, int end) {
     return j;
 }
 
+//quick sort algorithm referenced from https://slaystudy.com/c-vector-quicksort/
 void Driver::quicksort(vector<Painting> &vec, int start, int end, int algo) {
-    if(start < end){
-        if (algo == 1) {
+    if (start < end){
+        if (algo == 1) { //ranking by Most expensive first
             int p = partitionMEF(vec,start,end);
             quicksort(vec,start,p-1, 1);
             quicksort(vec,p+1,end, 1);
@@ -213,6 +200,7 @@ void Driver::quicksort(vector<Painting> &vec, int start, int end, int algo) {
     }
 }
 
+//generate all possible subsets for n paintings -> 2^n subsets - increases exponentially
 //referenced from https://towardsdatascience.com/a-guide-to-scraping-html-tables-with-pandas-and-beautifulsoup-7fc24c331cf7
 void Driver::generateSubsets(int count) {
     vector<int> temp;
@@ -235,57 +223,3 @@ void Driver::generateSubsets(int count) {
     }
 }
 
-//void Driver::output(ofstream &file, Wall list) {
-//    file << "$" << list.getTotalPrice() << endl;
-//    for (int i = 0; i < list.getNumPaintings(); i++) {
-//        file << list.at(i)
-//    }
-//    list.print(file);
-//}
-void Driver::read(ifstream& file, ofstream &brute, ofstream &highvalue, ofstream &custom) {
-    wallWidth = 0;
-    int wallHeight = 0;
-    int numPaintings = 0;
-    float price = 0;
-    int pWidth = 0;
-    int pHeight = 0;
-    int pID = 0;
-    smallestWidth = 1000000;
-
-    file >> wallWidth;
-    file >> wallHeight;
-    file >> numPaintings;
-
-    for (int i = 0; i < numPaintings; i++) {
-        file >> pID;
-        file >> price;
-        file >> pWidth;
-        file >> pHeight;
-
-        Painting artwork(pHeight, pWidth, price, pID);
-        pList.push_back(artwork);
-
-        if (pWidth < smallestWidth) {
-            smallestWidth = pWidth;
-        }
-    }
-
-    if (numPaintings <= 30) {
-        auto start = high_resolution_clock::now();
-        bruteForce(brute, numPaintings);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<seconds>(stop - start);
-        cout<<"Time that it takes for the brute force algo to get executed: "<<duration.count()<<endl;
-    }
-    auto start1 = high_resolution_clock::now();
-    mostExpFirst(highvalue);
-    auto stop1 = high_resolution_clock::now();
-    auto duration1 = duration_cast<milliseconds>(stop1 - start1);
-    cout<<"Time that it takes for the most expensive to algo get executed: "<<duration1.count()<<endl;
-
-    auto start2 = high_resolution_clock::now();
-    ppUnitWidth(custom);
-    auto stop2 = high_resolution_clock::now();
-    auto duration2 = duration_cast<milliseconds>(stop2 - start2);
-    cout<<"Time that it takes for the custom algo to get executed: "<<duration2.count()<<endl;
-}
