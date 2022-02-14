@@ -66,5 +66,5 @@ which is a feature in our wall class, displaying the total
 cost of the wall and the paintings that can be found on it in 
 a text file called '{inputfilename}-bruteforce.txt’.
 
-### Most Expensive Algorithm
+### Most Expensive Algorithm:
 
