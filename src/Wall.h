@@ -17,23 +17,21 @@ using namespace std;
 
 class Wall {
 private:
-    vector<Painting> pList;
-    float totalPrice;
-    float widthRemaining;
-    int numPaintings;
+    vector<Painting> pList; //vector of paintings to be on the wall
+    float totalPrice; //total price of the wall
+    float widthRemaining; //available space left on the wall
+    int numPaintings; //number of paintings on the wall
 public:
     //constructors
     Wall();
     Wall(int);
-    //~Wall();
 
-    //methods
+    //methods to be used
     void addPainting(Painting);
     float getTotalPrice();
     float getWidthRemaining();
     void print(ofstream&);
     int getNumPaintings();
-//    void setWidthWall(int);
 };
 
 

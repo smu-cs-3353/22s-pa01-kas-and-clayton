@@ -1,17 +1,18 @@
-
-# Consider dependencies only in project.
-set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
-
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
   )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/src/Driver.cpp" "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/cmake-build-debug/CMakeFiles/22s-pa01-kas-and-clayton.dir/src/Driver.cpp.o"
+  "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/src/Painting.cpp" "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/cmake-build-debug/CMakeFiles/22s-pa01-kas-and-clayton.dir/src/Painting.cpp.o"
+  "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/src/Wall.cpp" "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/cmake-build-debug/CMakeFiles/22s-pa01-kas-and-clayton.dir/src/Wall.cpp.o"
+  "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/src/main.cpp" "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/cmake-build-debug/CMakeFiles/22s-pa01-kas-and-clayton.dir/src/main.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
-# The set of dependency files which are needed:
-set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/src/Driver.cpp" "CMakeFiles/22s-pa01-kas-and-clayton.dir/src/Driver.cpp.o" "gcc" "CMakeFiles/22s-pa01-kas-and-clayton.dir/src/Driver.cpp.o.d"
-  "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/src/Painting.cpp" "CMakeFiles/22s-pa01-kas-and-clayton.dir/src/Painting.cpp.o" "gcc" "CMakeFiles/22s-pa01-kas-and-clayton.dir/src/Painting.cpp.o.d"
-  "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/src/Wall.cpp" "CMakeFiles/22s-pa01-kas-and-clayton.dir/src/Wall.cpp.o" "gcc" "CMakeFiles/22s-pa01-kas-and-clayton.dir/src/Wall.cpp.o.d"
-  "/Users/claytonmanchac/CLionProjects/22s-pa01-kas-and-clayton/src/main.cpp" "CMakeFiles/22s-pa01-kas-and-clayton.dir/src/main.cpp.o" "gcc" "CMakeFiles/22s-pa01-kas-and-clayton.dir/src/main.cpp.o.d"
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
   )
 
 # Targets to which this target links.
